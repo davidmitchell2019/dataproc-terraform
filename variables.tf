@@ -1,9 +1,12 @@
 variable "cluster_location" {
-  description = "Please input the cluster location like europe-west2 "
+  description = "Please input the cluster location like europe-west2"
+  type = "string"
+  default = "europe-west2"
 }
 
 variable "project" {
   description = "The Project name"
+  default = "jupyter-vm-testing"
 }
 
 variable "master_num_instances" {
@@ -13,9 +16,7 @@ variable "master_num_instances" {
 
 variable "worker_num_instances" {
   description = "Specifies the number of worker nodes to create"
-  /**
   default     = 2
-  **/
 }
 
 variable "master_machine_type" {

@@ -17,21 +17,21 @@ resource "google_dataproc_cluster" "poccluster" {
 
     master_config {
       num_instances = "${var.master_num_instances}"
-      machine_type  = "${var.master_machine_type}"
+      machine_type = "${var.master_machine_type}"
 
       disk_config {
-        boot_disk_type    = "pd-ssd"
+        boot_disk_type = "pd-ssd"
         boot_disk_size_gb = 30
       }
     }
 
     worker_config {
       num_instances = "${var.worker_num_instances}"
-      machine_type  = "${var.worker_machine_type}"
+      machine_type = "${var.worker_machine_type}"
 
       disk_config {
         boot_disk_size_gb = 30
-        num_local_ssds    = 1
+        num_local_ssds = 1
       }
     }
 
@@ -50,19 +50,22 @@ resource "google_dataproc_cluster" "poccluster" {
 
     gce_cluster_config {
       network = "${google_compute_network.dataproc_network.name}"
-      tags    = ["foo", "bar"]
+      tags = [
+        "foo",
+        "bar"]
     }
 
     # You can define multiple initialization_action blocks
     initialization_action {
-      script      = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
+      script = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
       timeout_sec = 500
     }
 
     initialization_action {
-      script      = "gs://dataproc-initialization-actions/ganglia/ganglia.sh"
+      script = "gs://dataproc-initialization-actions/ganglia/ganglia.sh"
       timeout_sec = 500
     }
+  }}
 /**
     initialization_action {
       script      = "gs://dataproc-initialization-actions/zookeeper/zookeeper.sh"

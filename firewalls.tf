@@ -7,11 +7,11 @@ resource "google_compute_firewall" "dataprocopen" {
     protocol = "icmp"
   }
 
-  // Allow incoming SSH connections
-  //allow {
-  //protocol = "tcp"
-  // ports = ["22"]
-  //}
+  // allow SSH
+  allow {
+    protocol = "tcp"
+    ports = ["22"]
+  }
 
   // Allow incoming connections to typespeed
   allow {
