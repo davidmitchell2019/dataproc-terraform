@@ -6,3 +6,4 @@
 *.plan
 # Module directory
 .terraform/
+*.idea
